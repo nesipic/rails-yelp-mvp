@@ -1,0 +1,21 @@
+<h2><%= @restaurant.name %></h2>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.category %></p>
+
+<%= link_to "Update", edit_restaurant_path(@restaurant)  %>
+<%= link_to "Delete #{@restaurant.name}",
+            restaurant_path(@restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<%= link_to "Create", new_restaurant_path  %>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+    <li class="list-group-item"><%= review.rating %></li>
+  <% end %>
+</ul>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+
+
+
+<p> If you want to get back to the restaurants list press <%= link_to "HERE", restaurants_path  %>
